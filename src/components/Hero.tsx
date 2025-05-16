@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-
 const Hero = () => {
-  return (
-    <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-white to-portfolio-blue-light section-padding pt-28">
+  return <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-white to-portfolio-blue-light section-padding pt-28">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="order-2 md:order-1 animate-fade-in">
           <div className="inline-block mb-3 px-3 py-1 bg-portfolio-blue/10 text-portfolio-blue rounded-full text-sm font-medium">
@@ -24,42 +21,25 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-wrap gap-4 mb-10">
-            <Button 
-              asChild
-              className="bg-portfolio-blue hover:bg-portfolio-blue-dark text-white px-8 py-6 rounded-md transition-colors group"
-            >
+            <Button asChild className="bg-portfolio-blue hover:bg-portfolio-blue-dark text-white px-8 py-6 rounded-md transition-colors group">
               <a href="#portfolio">
                 View My Work
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <Button 
-              asChild
-              variant="outline"
-              className="border-portfolio-blue text-portfolio-blue hover:bg-portfolio-blue hover:text-white px-8 py-6 rounded-md transition-colors"
-            >
+            <Button asChild variant="outline" className="border-portfolio-blue text-portfolio-blue hover:bg-portfolio-blue hover:text-white px-8 py-6 rounded-md transition-colors">
               <a href="#contact">Contact Me</a>
             </Button>
           </div>
           
           <div className="flex items-center gap-6">
-            <a href="mailto:baibhavikumari747@gmail.com" 
-              className="text-gray-600 hover:text-portfolio-blue transition-colors hover:-translate-y-1 duration-200"
-              aria-label="Email me">
+            <a href="mailto:baibhavikumari747@gmail.com" className="text-gray-600 hover:text-portfolio-blue transition-colors hover:-translate-y-1 duration-200" aria-label="Email me">
               <Mail size={20} />
             </a>
-            <a href="#" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-gray-600 hover:text-portfolio-blue transition-colors hover:-translate-y-1 duration-200"
-              aria-label="LinkedIn profile">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-portfolio-blue transition-colors hover:-translate-y-1 duration-200" aria-label="LinkedIn profile">
               <Linkedin size={20} />
             </a>
-            <a href="https://github.com/TrickyBaibhavi" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-gray-600 hover:text-portfolio-blue transition-colors hover:-translate-y-1 duration-200"
-              aria-label="GitHub profile">
+            <a href="https://github.com/TrickyBaibhavi" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-portfolio-blue transition-colors hover:-translate-y-1 duration-200" aria-label="GitHub profile">
               <Github size={20} />
             </a>
           </div>
@@ -70,17 +50,11 @@ const Hero = () => {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-portfolio-blue/60 to-portfolio-blue rounded-full blur-xl opacity-75"></div>
             <div className="absolute -z-10 w-72 h-72 md:w-96 md:h-96 rounded-full bg-portfolio-blue-light/50 translate-x-6 -translate-y-6"></div>
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl hover:shadow-2xl transition-shadow duration-300 hover:-translate-y-2 transform duration-300">
-              <img 
-                src="https://postimage.me/images/2025/05/16/Screenshot-2025-04-28-124609.png" 
-                alt="Baibhavi Kumari" 
-                className="w-full h-full object-cover"
-              />
+              <img src="https://postimage.me/images/2025/05/16/Screenshot-2025-04-28-124609.png" alt="Baibhavi Kumari" className="w-full h-full object-fill" />
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
