@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Hero = () => {
   return (
@@ -70,7 +71,7 @@ const Hero = () => {
             <div className="absolute -z-10 w-72 h-72 md:w-96 md:h-96 rounded-full bg-portfolio-blue-light/50 translate-x-6 -translate-y-6"></div>
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl hover:shadow-2xl transition-shadow duration-300 hover:-translate-y-2 transform duration-300">
               <img 
-                src="https://images.unsplash.com/photo-1590755958171-90168ab2a204?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                src="https://postimage.me/image/Screenshot-2025-04-28-124609.UPIygg" 
                 alt="Baibhavi Kumari" 
                 className="w-full h-full object-cover"
               />
