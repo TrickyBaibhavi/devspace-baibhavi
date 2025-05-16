@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const Services = () => {
   const services = [
@@ -61,9 +62,15 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-white">
-      <div className="container mx-auto">
+    <section id="services" className="section-padding bg-white relative overflow-hidden">
+      <div className="absolute top-40 left-0 w-72 h-72 rounded-full bg-portfolio-blue-light/20 blur-3xl"></div>
+      <div className="absolute bottom-20 right-0 w-64 h-64 rounded-full bg-portfolio-blue-light/10 blur-3xl"></div>
+      
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-12">
+          <Badge className="mb-3 px-4 py-1.5 text-sm bg-portfolio-blue/10 text-portfolio-blue border-none hover:bg-portfolio-blue/20">
+            What I Offer
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-3">My Services</h2>
           <div className="h-1 w-20 bg-portfolio-blue mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-3xl mx-auto">
@@ -73,14 +80,20 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Card key={index} className="border-none hover-lift card-shadow rounded-xl overflow-hidden">
-              <CardHeader className="pb-2">
-                <div className="text-portfolio-blue mb-4">
+            <Card 
+              key={index} 
+              className="border-none hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group card-shadow rounded-xl overflow-hidden relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-portfolio-blue-light/0 to-portfolio-blue-light/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <CardHeader className="pb-2 relative z-10">
+                <div className="text-portfolio-blue mb-4 transform group-hover:scale-110 transition-transform duration-300 origin-left">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold">{service.title}</h3>
+                <h3 className="text-xl font-semibold group-hover:text-portfolio-blue transition-colors">{service.title}</h3>
               </CardHeader>
-              <CardContent>
+              
+              <CardContent className="relative z-10">
                 <p className="text-gray-600">{service.description}</p>
               </CardContent>
             </Card>

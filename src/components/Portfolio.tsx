@@ -81,22 +81,28 @@ const Portfolio = () => {
   const filteredProjects = filterProjects(projects, activeFilter);
 
   return (
-    <section id="portfolio" className="section-padding bg-gray-50">
-      <div className="container mx-auto">
+    <section id="portfolio" className="section-padding bg-gray-50 relative overflow-hidden">
+      <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-portfolio-blue-light/20 blur-3xl"></div>
+      <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full bg-portfolio-blue-light/10 blur-3xl"></div>
+      
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">My Projects</h2>
+          <Badge className="mb-3 px-4 py-1.5 text-sm bg-portfolio-blue/10 text-portfolio-blue border-none hover:bg-portfolio-blue/20">
+            My Work
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Featured Projects</h2>
           <div className="h-1 w-20 bg-portfolio-blue mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-3xl mx-auto mb-8">
             Here are some of the projects I've worked on. Each showcases different skills and technologies.
           </p>
           
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
             {filters.map((filter) => (
               <button
                 key={filter.name}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeFilter === filter.name
-                    ? 'bg-portfolio-blue text-white'
+                    ? 'bg-portfolio-blue text-white shadow-md'
                     : 'bg-white text-gray-700 hover:bg-gray-100'
                 }`}
                 onClick={() => setActiveFilter(filter.name)}
@@ -107,14 +113,23 @@ const Portfolio = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {filteredProjects.map((project, index) => (
-            <Card key={index} className="overflow-hidden hover-lift card-shadow rounded-xl border-none">
-              <div className="h-56 overflow-hidden">
+            <Card 
+              key={index} 
+              className="overflow-hidden group hover:-translate-y-2 transition-all duration-300 card-shadow rounded-xl border-none"
+            >
+              <div className="h-56 overflow-hidden relative">
+                <div className="absolute inset-0 bg-portfolio-blue/60 opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-center justify-center z-10">
+                  <div className="text-white text-center px-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                    <h4 className="text-xl font-semibold mb-2">{project.title}</h4>
+                    <p className="text-sm">{project.description}</p>
+                  </div>
+                </div>
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
               <CardHeader className="pt-6 pb-2">
@@ -124,7 +139,10 @@ const Portfolio = () => {
                 <p className="text-gray-600 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} className="bg-portfolio-blue-light text-portfolio-blue-dark hover:bg-portfolio-blue-light">
+                    <Badge 
+                      key={techIndex} 
+                      className="bg-portfolio-blue-light text-portfolio-blue-dark hover:bg-portfolio-blue-light"
+                    >
                       {tech}
                     </Badge>
                   ))}
