@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, Linkedin, Github } from 'lucide-react';
 import { useToast } from "@/components/ui/use-toast";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -26,8 +27,22 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    // EmailJS configuration
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message
+    };
+    
+    emailjs.send(
+      'service_hqy4zmt', 
+      'template_avb3d99', 
+      templateParams, 
+      'gw106xTrwr-d6tuuo'
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
       setLoading(false);
       toast({
         title: "Message sent!",
@@ -39,7 +54,16 @@ const Contact = () => {
         subject: '',
         message: ''
       });
-    }, 1500);
+    })
+    .catch((err) => {
+      console.error('FAILED...', err);
+      setLoading(false);
+      toast({
+        title: "Message failed to send",
+        description: "There was an issue sending your message. Please try again later.",
+        variant: "destructive"
+      });
+    });
   };
   
   return (
